@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajat Chawla | Lead Backend & AI Systems Engineer</title>
+    <meta name="description" content="Portfolio of Rajat Chawla, Systems Engineer specializing in the building and deployment of scalable backend architectures, AI workflows, and agentic systems.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Space Grotesk (Brutalist Headings), Inter (Clean Body), Fira Code (System/Mono) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind Configuration for Cyber-Brutalist Theme -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            black: '#07070a',
+                            dark: '#0d0e15',
+                            slate: '#121520',
+                            border: '#1e293b',
+                            accent: '#00f0ff',  // Electric Blue
+                            glow: '#00d8ff',
+                            mint: '#00ffcc',   // Mint highlight
+                            indigo: '#6366f1'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'scanline': 'scanline 8s linear infinite',
+                        'glow-pulse': 'glow-pulse 3s infinite alternate',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        scanline: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(100%)' }
+                        },
+                        'glow-pulse': {
+                            '0%': { boxShadow: '0 0 10px rgba(0, 240, 255, 0.2), inset 0 0 10px rgba(0, 240, 255, 0.1)' },
+                            '100%': { boxShadow: '0 0 25px rgba(0, 240, 255, 0.5), inset 0 0 20px rgba(0, 240, 255, 0.3)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Elite Styling -->
+    <style type="text/css">
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #07070a;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #07070a;
+            border-left: 1px solid #1e293b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 0px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f0ff;
+        }
+        
+        /* Grid Blueprint Pattern */
+        .cyber-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(30, 41, 59, 0.2) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(30, 41, 59, 0.2) 1px, transparent 1px);
+        }
+        
+        /* Dot Matrix Pattern overlay */
+        .dot-matrix {
+            background-image: radial-gradient(rgba(0, 240, 255, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Metallic Scanline Filter */
+        .cyber-hud::after {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 3px, 3px 100%;
+            pointer-events: none;
+        }
+        
+        /* Custom Selection Highlight */
+        ::selection {
+            background-color: rgba(0, 240, 255, 0.25);
+            color: #00f0ff;
+        }
+    </style>
+</head>
+<body class="cyber-grid min-h-screen relative selection:bg-cyber-accent/30 selection:text-white">
+
+    <!-- Global Glowing Ambient Spotlights -->
+    <div class="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full bg-cyber-accent/5 filter blur-[150px] pointer-events-none"></div>
+    <div class="absolute top-[30%] right-10 w-[500px] h-[500px] rounded-full bg-indigo-500/5 filter blur-[130px] pointer-events-none"></div>
+    <div class="absolute bottom-[20%] left-10 w-[550px] h-[550px] rounded-full bg-cyber-mint/5 filter blur-[140px] pointer-events-none"></div>
+
+    <!-- Active Scrolling compact glass navbar -->
+    <div id="sticky-nav" class="fixed top-0 left-0 right-0 z-50 transform -translate-y-full transition-transform duration-300 backdrop-blur-md bg-cyber-black/85 border-b border-cyber-border py-4 px-6 flex items-center justify-between">
+        <a href="#branding-top" class="text-md font-bold uppercase tracking-[0.15em] text-white hover:text-cyber-accent transition-colors">
+            Rajat Chawla <span class="text-cyber-accent">.</span>
+        </a>
+        <div class="flex items-center space-x-8">
+            <a href="#about" class="text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-white transition-colors">About</a>
+            <a href="#skills" class="text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-white transition-colors">Skills</a>
+            <a href="#building-deployment" class="text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-white transition-colors">Experience</a>
+            <a href="#simulator" class="text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-white transition-colors">Sandbox</a>
+            <a href="#contact" class="text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-white transition-colors">Contact</a>
+        </div>
+        <a href="#contact" class="px-4 py-2 border border-cyber-accent/50 text-cyber-accent text-[10px] font-bold uppercase tracking-wider hover:bg-cyber-accent hover:text-cyber-black transition-all">
+            Secure Channel
+        </a>
+    </div>
+
+    <!-- Hero Branding Header (Strict rule #3: Large center layout with stretched navigation) -->
+    <div id="branding-top" class="w-full pt-16 pb-6 border-b border-cyber-border/40 bg-cyber-black relative z-40">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
+            <!-- Stretched Top Status Bar -->
+            <div class="w-full flex items-center justify-between text-[10px] font-mono text-slate-500 uppercase tracking-widest border-b border-cyber-border/30 pb-4 mb-8">
+                <span>SYSTEM ID: RC_00777732</span>
+                <span class="flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyber-mint animate-pulse"></span>
+                    SECURE NODE DEPLOYED IN DELHI_NCR
+                </span>
+                <span>VER: 2026.05.17</span>
+            </div>
+
+            <!-- Heavy center layout Name -->
+            <h1 class="text-5xl md:text-8xl font-black tracking-[0.2em] text-center uppercase text-transparent bg-clip-text bg-gradient-to-b from-white via-slate-200 to-slate-500 mb-6 drop-shadow-2xl">
+                RAJAT CHAWLA
+            </h1>
+
+            <p class="text-center font-mono text-xs text-cyber-accent uppercase tracking-[0.3em] mb-8">
+                [ Lead Backend & Artificial Intelligence Architect ]
+            </p>
+
+            <!-- Stretched Professional Navigation Links -->
+            <nav class="w-full max-w-4xl border-t border-b border-cyber-border py-4 flex flex-wrap items-center justify-between gap-4">
+                <a href="#about" class="flex-1 text-center text-xs md:text-sm font-bold uppercase tracking-[0.15em] text-slate-400 hover:text-cyber-accent border-r border-cyber-border/50 last:border-r-0 transition-colors">
+                    01 // ABOUT
+                </a>
+                <a href="#skills" class="flex-1 text-center text-xs md:text-sm font-bold uppercase tracking-[0.15em] text-slate-400 hover:text-cyber-accent border-r border-cyber-border/50 last:border-r-0 transition-colors">
+                    02 // TECHNICAL SKILLS
+                </a>
+                <a href="#building-deployment" class="flex-1 text-center text-xs md:text-sm font-bold uppercase tracking-[0.15em] text-slate-400 hover:text-cyber-accent border-r border-cyber-border/50 last:border-r-0 transition-colors">
+                    03 // BUILDING & DEPLOYMENT
+                </a>
+                <a href="#simulator" class="flex-1 text-center text-xs md:text-sm font-bold uppercase tracking-[0.15em] text-slate-400 hover:text-cyber-accent border-r border-cyber-border/50 last:border-r-0 transition-colors">
+                    04 // AGENTIC SANDBOX
+                </a>
+                <a href="#contact" class="flex-1 text-center text-xs md:text-sm font-bold uppercase tracking-[0.15em] text-slate-400 hover:text-cyber-accent transition-colors">
+                    05 // CONTACT
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- MAIN BODY CONTAINER -->
+    <main class="max-w-7xl mx-auto px-6 space-y-24 py-16 relative z-10">
+
+        <!-- SECTION 1: HERO & GENERAL SPECIFICATION (2-Column Split) -->
+        <section id="about" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start pt-8 pb-12">
+            
+            <!-- COLUMN 1: Metallic HUD Image / Profile Placeholder (Left Side) -->
+            <div class="lg:col-span-5 relative group">
+                <!-- Outer Metallic Frame border -->
+                <div class="absolute inset-0 p-[1px] rounded-xl bg-gradient-to-br from-slate-600 via-cyber-border to-slate-800 group-hover:from-cyber-accent group-hover:via-indigo-500 group-hover:to-cyber-mint transition-all duration-500 shadow-2xl"></div>
+                
+                <!-- Inner Panel Content Area -->
+                <div class="relative bg-gradient-to-b from-cyber-dark to-cyber-black p-4 rounded-[11px] overflow-hidden aspect-[4/5] flex flex-col justify-between cyber-hud">
+                    
+                    <!-- HUD Scanlines & Dot Matrix background -->
+                    <div class="absolute inset-0 dot-matrix pointer-events-none opacity-20"></div>
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyber-accent/5 to-transparent w-full h-1/2 animate-scanline pointer-events-none"></div>
+                    
+                    <!-- HUD Top Meta bar -->
+                    <div class="relative z-10 flex items-center justify-between text-[9px] font-mono text-slate-400">
+                        <span class="flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-cyber-accent animate-ping"></span>
+                            CORE_SYS: ONLINE
+                        </span>
+                        <span>[ SECURE_PORTFOLIO ]</span>
+                    </div>
+
+                    <!-- Centered Highly Engineered Hologram / Schematic Mockup -->
+                    <div class="relative z-10 w-full h-full flex flex-col items-center justify-center py-6">
+                        <!-- Blueprint Cybernetic Dials -->
+                        <div class="absolute w-48 h-48 border border-cyber-accent/15 rounded-full flex items-center justify-center animate-spin" style="animation-duration: 20s;">
+                            <div class="w-40 h-40 border border-dashed border-cyber-accent/10 rounded-full"></div>
+                        </div>
+                        <div class="absolute w-36 h-36 border border-cyber-mint/20 rounded-full flex items-center justify-center animate-spin" style="animation-duration: 10s; animation-direction: reverse;">
+                            <div class="w-28 h-28 border border-dashed border-cyber-mint/10 rounded-full"></div>
+                        </div>
+                        
+                        <!-- Center Avatar Vector Mockup -->
+                        <div class="relative w-32 h-32 flex items-center justify-center border border-cyber-border/80 bg-cyber-dark p-2 z-10">
+                            <!-- Technical Wireframe Silhouette -->
+                            <svg class="w-24 h-24 text-slate-700 group-hover:text-cyber-accent transition-colors duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <!-- Crosshairs -->
+                            <span class="absolute top-0 left-0 w-2 h-2 border-t border-l border-cyber-accent"></span>
+                            <span class="absolute top-0 right-0 w-2 h-2 border-t border-r border-cyber-accent"></span>
+                            <span class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-cyber-accent"></span>
+                            <span class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-cyber-accent"></span>
+                        </div>
+
+                        <!-- Technical Parameter Overlays -->
+                        <div class="w-full mt-6 grid grid-cols-2 gap-2 text-[10px] font-mono text-slate-400 text-left px-4">
+                            <div class="border-l border-cyber-accent/40 pl-2">
+                                <p class="text-slate-500 font-semibold uppercase">Primary Language</p>
+                                <p class="text-white font-bold">Python v3.11</p>
+                            </div>
+                            <div class="border-l border-cyber-mint/40 pl-2">
+                                <p class="text-slate-500 font-semibold uppercase">Deploy Focus</p>
+                                <p class="text-white font-bold">AI Agent / n8n</p>
+                            </div>
+                            <div class="border-l border-cyber-accent/40 pl-2 mt-2">
+                                <p class="text-slate-500 font-semibold uppercase">API Orchestration</p>
+                                <p class="text-white font-bold">FastAPI / LangChain</p>
+                            </div>
+                            <div class="border-l border-cyber-mint/40 pl-2 mt-2">
+                                <p class="text-slate-500 font-semibold uppercase">Search Engine</p>
+                                <p class="text-white font-bold">FAISS VectorDB</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HUD Bottom Metadata -->
+                    <div class="relative z-10 flex items-center justify-between text-[8px] font-mono text-slate-500 border-t border-cyber-border/40 pt-3">
+                        <span>LATENCY: &lt; 8.4ms</span>
+                        <span class="text-cyber-accent font-bold">NODE: SHIPPABLE_V2</span>
+                        <span>UPTIME: 100%</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- COLUMN 2: Large Impact Core Objective Details (Right Side) -->
+            <div class="lg:col-span-7 flex flex-col justify-center space-y-6">
+                <!-- Large brutalist title -->
+                <span class="inline-flex items-center gap-2 px-3 py-1 bg-cyber-accent/10 border border-cyber-accent/20 text-cyber-accent text-xs font-mono uppercase tracking-[0.2em] w-fit">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyber-accent animate-pulse"></span>
+                    ACTIVE ARCHITECT SPECIFICATION
+                </span>
+
+                <h2 class="text-3xl md:text-5xl font-black text-white leading-tight uppercase">
+                    Focused on shipping high-efficiency <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-accent to-cyber-mint">AI pipelines</span> and resilient backend architecture.
+                </h2>
+
+                <p class="text-slate-400 text-sm md:text-base leading-relaxed font-light">
+                    Experienced in shipping production-ready code using <strong class="text-white font-medium">Python, FastAPI</strong>, and <strong class="text-white font-medium">LLM orchestration tools</strong>. 
+                    Passionate about writing clean, scalable logic and rapidly integrating APIs to turn complex workflows into reliable automated systems. Focused on the building and deployment of AI-integrated modules.
+                </p>
+
+                <!-- High-conversion quick metadata grids -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
+                    <!-- Academic Track 1 -->
+                    <div class="p-4 bg-cyber-dark border border-cyber-border/80 hover:border-cyber-accent/40 rounded-lg transition-all duration-300">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded bg-cyber-accent/10 text-cyber-accent flex items-center justify-center font-bold text-xs font-mono">01</span>
+                            <div>
+                                <span class="text-[9px] text-slate-500 uppercase font-mono tracking-wider">MCA (AI & Machine Learning)</span>
+                                <h4 class="text-xs font-bold text-white uppercase">UPES University</h4>
+                                <span class="text-[10px] text-cyber-accent font-mono">2024 - 2026</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Academic Track 2 -->
+                    <div class="p-4 bg-cyber-dark border border-cyber-border/80 hover:border-cyber-accent/40 rounded-lg transition-all duration-300">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded bg-cyber-mint/10 text-cyber-mint flex items-center justify-center font-bold text-xs font-mono">02</span>
+                            <div>
+                                <span class="text-[9px] text-slate-500 uppercase font-mono tracking-wider">BCA (Internet of Things)</span>
+                                <h4 class="text-xs font-bold text-white uppercase">UPES University</h4>
+                                <span class="text-[10px] text-cyber-mint font-mono">2020 - 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to action block -->
+                <div class="flex flex-col sm:flex-row items-center gap-4 pt-2">
+                    <a href="#contact" class="w-full sm:w-auto px-6 py-3.5 bg-cyber-accent hover:bg-cyber-accent/90 text-cyber-black text-xs font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-cyber-accent/10">
+                        <span>Execute Communication</span>
+                        <i class="fa-solid fa-terminal text-sm"></i>
+                    </a>
+                    <a href="#building-deployment" class="w-full sm:w-auto px-6 py-3.5 bg-transparent hover:bg-slate-900 border border-cyber-border hover:border-slate-700 text-white text-xs font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2">
+                        <span>Inspect System Shipped</span>
+                        <i class="fa-solid fa-server text-sm text-slate-500"></i>
+                    </a>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SECTION 2: TECHNICAL SKILLS (Grid layouts, Metallic borders, Clean division) -->
+        <section id="skills" class="py-12 border-t border-cyber-border/60">
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+                <div>
+                    <span class="text-xs font-mono text-cyber-accent uppercase tracking-widest">// ENGINE CAPACITY</span>
+                    <h2 class="text-4xl font-extrabold uppercase text-white mt-2">Technical Skills</h2>
+                </div>
+                <p class="text-slate-400 text-xs md:text-sm max-w-md">
+                    Technical vectors indexed by structural classification. Built for advanced RAG architectures, low-latency API logic, and secure deployments.
+                </p>
+            </div>
+
+            <!-- Skills Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Category 1: Languages & Frameworks -->
+                <div class="relative group">
+                    <div class="absolute inset-0 p-[1px] rounded-xl bg-gradient-to-b from-slate-700/50 via-slate-800/30 to-transparent group-hover:from-cyber-accent/40 transition-all duration-300"></div>
+                    <div class="relative p-8 rounded-[11px] bg-gradient-to-b from-cyber-dark to-cyber-black border border-cyber-border h-full flex flex-col justify-between hover:shadow-[0_0_30px_rgba(0,240,255,0.05)] transition-all">
+                        <div>
+                            <!-- Header Info -->
+                            <div class="flex items-center justify-between mb-6">
+                                <h3 class="text-md font-bold uppercase tracking-wider text-white">Languages & Frameworks</h3>
+                                <i class="fa-solid fa-code text-cyber-accent text-sm"></i>
+                            </div>
+                            
+                            <!-- Skill Elements -->
+                            <ul class="space-y-5 font-mono text-xs">
+                                <li class="border-b border-cyber-border/50 pb-3 flex items-center justify-between">
+                                    <span class="text-slate-300 font-medium">Python (Advanced)</span>
+                                    <span class="px-2 py-0.5 rounded bg-cyber-accent/10 border border-cyber-accent/30 text-cyber-accent text-[9px]">EXPERT</span>
+                                </li>
+                                <li class="border-b border-cyber-border/50 pb-3 flex items-center justify-between">
+                                    <span class="text-slate-300 font-medium">FastAPI</span>
+                                    <span class="px-2 py-0.5 rounded bg-cyber-accent/10 border border-cyber-accent/30 text-cyber-accent text-[9px]">PRODUCTION</span>
+                                </li>
+                                <li class="border-b border-cyber-border/50 pb-3 flex items-center justify-between">
+                                    <span class="text-slate-300 font-medium">JavaScript & Node.js</span>
+                                    <span class="px-2 py-0.5 rounded bg-cyber-accent/10 border border-cyber-accent/30 text-cyber-accent text-[9px]">FLUENT</span>
+                                </li>
+                                <li class="pb-1 flex items-center justify-between">
+                                    <span class="text-slate-300 font-medium">SQL</span>
+                                    <span class="px-2 py-0.5 rounded bg-cyber-accent/10 border border-cyber-accent/30 text-cyber-accent text-[9px]">ADVANCED</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="text-[9px] font-mono text-slate-500 mt-6 pt-4 border-t border-cyber-border/30">
+                            CAPABILITY LEVEL: STABLE CORE
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 2: AI & Orchestration -->
+                <div class="relative group">
+                    <div class="absolute inset-0 p-[1px] rounded-xl bg-gradient-to-b from-slate-700/50 via-slate-800/30 to-transparent group-hover:from-cyber-accent/40 transition-all duration-300"></div>
+                    <div class="relative p-8 rounded-[11px] bg-gradient-to-b from-cyber-dark to-cyber-black border border-cyber-border h-full flex flex-col justify-between hover:shadow-[0_0_30px_rgba(0,240,255,0.05)] transition-all">
+                        <div>
+                            <!-- Header Info -->
+                            <div class="flex items-center justify-between mb-6">
+                                <h3 class="text-md font-bold uppercase tracking-wider text-white">AI & Orchestration</h3>
+                                <i class="fa-solid fa-robot text-cyber-accent text-sm"></i>
+                            </div>
+                            
+                            <!-- Skill Elements -->
+                            <ul class="space-y-5 font-mono text-xs">
+                                <li class="border-b border-cyber-border/50 pb-3 flex items-center justify-between">
+                                    <span class="text-slate-300 font-medium">Agentic Workflows</span>
+                                    <span class="px-2 py-0.5 rounded bg-cyber-accent/10 border border-cyber-accent/30 text-cyber-accent text-[9px]">ADVANCED</span>
+                                </li>
+                                <li class="border-b border-cyber-border/50 pb-3 flex items-center justify-between">
+                                    <span class="text-slate-300 font-medium">n8n Automation</span>
+                                    <span class="px-2 py-0.5 rounded bg-cyber-accent/10 border border-cyber-accent/30 text-cyber-accent text-[9px]">WORKFLOWS</span>
+                                </li>
+                                <li class="border-b border-cyber-border/50 pb-3 flex items-center justify-between">
+                                    <span class="text-slate-300 font-medium">LLM API Integrations</span>
+                                    <span class="px-2 py-0.5 rounded bg-cyber-accent/10 border border-cyber-accent/30 text-cyber-accent text-[9px]">APIS</span>
+                                </li>
+                                <li class="pb-1 flex items-center justify-between">
+                                    <span class="text-slate-300 font-medium">LangChain & RAG</span>
+                                    <span class="px-2 py-0.5 rounded bg-cyber-accent/10 border border-cyber-accent/30 text-cyber-accent text-[9px]">RETRIEVAL</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="text-[9px] font-mono text-slate-500 mt-6 pt-4 border-t border-cyber-border/30">
+                            CAPABILITY LEVEL: AGENTIC SPECIALIST
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 3: Backend & Infrastructure -->
+                <div class="relative group">
+                    <div class="absolute inset-0 p-[1px] rounded-xl bg-gradient-to-b from-slate-700/50 via-slate-800/30 to-transparent group-hover:from-cyber-accent/40 transition-all duration-300"></div>
+                    <div class="relative p-8 rounded-[11px] bg-gradient-to-b from-cyber-dark to-cyber-black border border-cyber-border h-full flex flex-col justify-between hover:shadow-[0_0_30px_rgba(0,240,255,0.05)] transition-all">
+                        <div>
+                            <!-- Header Info -->
+                            <div class="flex items-center justify-between mb-6">
+                                <h3 class="text-md font-bold uppercase tracking-wider text-white">Backend & Infrastructure</h3>
+                                <i class="fa-solid fa-server text-cyber-accent text-sm"></i>
+                            </div>
+                            
+                            <!-- Skill Elements -->
+                            <ul class="space-y-5 font-mono text-xs">
+                                <li class="border-b border-cyber-border/50 pb-3 flex items-center justify-between">
+                                    <span class="text-slate-300 font-medium">REST API Design</span>
+                                    <span class="px-2 py-0.5 rounded bg-cyber-accent/10 border border-cyber-accent/30 text-cyber-accent text-[9px]">SCALABLE</span>
+                                </li>
+                                <li class="border-b border-cyber-border/50 pb-3 flex items-center justify-between">
+                                    <span class="text-slate-300 font-medium">System Deployment</span>
+                                    <span class="px-2 py-0.5 rounded bg-cyber-accent/10 border border-cyber-accent/30 text-cyber-accent text-[9px]">GITOPS</span>
+                                </li>
+                                <li class="border-b border-cyber-border/50 pb-3 flex items-center justify-between">
+                                    <span class="text-slate-300 font-medium">Vector Databases (FAISS)</span>
+                                    <span class="px-2 py-0.5 rounded bg-cyber-accent/10 border border-cyber-accent/30 text-cyber-accent text-[9px]">SEMANTIC</span>
+                                </li>
+                                <li class="pb-1 flex items-center justify-between">
+                                    <span class="text-slate-300 font-medium">Data Structures & Git</span>
+                                    <span class="px-2 py-0.5 rounded bg-cyber-accent/10 border border-cyber-accent/30 text-cyber-accent text-[9px]">REPOSITORIES</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="text-[9px] font-mono text-slate-500 mt-6 pt-4 border-t border-cyber-border/30">
+                            CAPABILITY LEVEL: RESILIENT CORE
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- INTERACTIVE ELEMENT #1: Dynamic System Architecture Map -->
+            <div class="mt-12 p-[1px] rounded-xl bg-gradient-to-r from-cyber-border via-slate-800 to-cyber-border">
+                <div class="bg-cyber-dark p-6 md:p-8 rounded-[11px] border border-cyber-border">
+                    <span class="text-[10px] font-mono text-cyber-accent uppercase tracking-widest flex items-center gap-1.5 mb-4">
+                        <i class="fa-solid fa-diagram-project"></i>
+                        Interactive Architecture Map - Tap Nodes to Inspect Deployments
+                    </span>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        
+                        <!-- The Architecture SVG Flowchart (Left) -->
+                        <div class="lg:col-span-8 bg-cyber-black/50 p-6 rounded-lg border border-cyber-border/60 relative overflow-hidden flex items-center justify-center min-h-[300px]">
+                            <!-- Schematic Grid overlay -->
+                            <div class="absolute inset-0 dot-matrix opacity-10"></div>
+                            
+                            <!-- Flowchart SVGs -->
+                            <svg class="w-full max-w-lg h-auto" viewBox="0 0 600 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Connection Lines -->
+                                <path d="M110 120H170" stroke="#1e293b" stroke-width="2" id="line1" class="transition-colors duration-300"/>
+                                <path d="M270 120H330" stroke="#1e293b" stroke-width="2" id="line2" class="transition-colors duration-300"/>
+                                <path d="M430 120H490" stroke="#1e293b" stroke-width="2" id="line3" class="transition-colors duration-300"/>
+                                
+                                <path d="M220 80V50H330" stroke="#1e293b" stroke-width="1.5" stroke-dasharray="4" />
+                                
+                                <!-- Node 1: API Gateway (FastAPI) -->
+                                <g transform="translate(10, 80)" class="cursor-pointer group" onclick="setActiveArchNode('api')">
+                                    <rect x="0" y="0" width="100" height="80" rx="6" fill="#0d0e15" stroke="#1e293b" stroke-width="1.5" id="rect-api" class="transition-colors duration-300"/>
+                                    <text x="50" y="35" fill="#94a3b8" font-size="10" font-family="Fira Code" text-anchor="middle" font-weight="bold">FastAPI</text>
+                                    <text x="50" y="55" fill="#f8fafc" font-size="11" font-family="Space Grotesk" text-anchor="middle">API Gateway</text>
+                                    <circle cx="50" cy="72" r="3" fill="#1e293b" id="dot-api" class="transition-colors duration-300"/>
+                                </g>
+
+                                <!-- Node 2: LLM Orchestrator (n8n / LangChain) -->
+                                <g transform="translate(170, 80)" class="cursor-pointer group" onclick="setActiveArchNode('orch')">
+                                    <rect x="0" y="0" width="100" height="80" rx="6" fill="#0d0e15" stroke="#00f0ff" stroke-width="2" id="rect-orch" class="transition-colors duration-300"/>
+                                    <text x="50" y="35" fill="#00f0ff" font-size="10" font-family="Fira Code" text-anchor="middle" font-weight="bold">n8n / LangChain</text>
+                                    <text x="50" y="55" fill="#f8fafc" font-size="11" font-family="Space Grotesk" text-anchor="middle">Orchestrator</text>
+                                    <circle cx="50" cy="72" r="3" fill="#00f0ff" id="dot-orch" class="transition-colors duration-300"/>
+                                </g>
+
+                                <!-- Node 3: FAISS Vector DB -->
+                                <g transform="translate(330, 80)" class="cursor-pointer group" onclick="setActiveArchNode('db')">
+                                    <rect x="0" y="0" width="100" height="80" rx="6" fill="#0d0e15" stroke="#1e293b" stroke-width="1.5" id="rect-db" class="transition-colors duration-300"/>
+                                    <text x="50" y="35" fill="#94a3b8" font-size="10" font-family="Fira Code" text-anchor="middle" font-weight="bold">FAISS</text>
+                                    <text x="50" y="55" fill="#f8fafc" font-size="11" font-family="Space Grotesk" text-anchor="middle">Vector DB</text>
+                                    <circle cx="50" cy="72" r="3" fill="#1e293b" id="dot-db" class="transition-colors duration-300"/>
+                                </g>
+
+                                <!-- Node 4: LLM Engine (API) -->
+                                <g transform="translate(490, 80)" class="cursor-pointer group" onclick="setActiveArchNode('llm')">
+                                    <rect x="0" y="0" width="100" height="80" rx="6" fill="#0d0e15" stroke="#1e293b" stroke-width="1.5" id="rect-llm" class="transition-colors duration-300"/>
+                                    <text x="50" y="35" fill="#94a3b8" font-size="10" font-family="Fira Code" text-anchor="middle" font-weight="bold">GPT-4/Claude</text>
+                                    <text x="50" y="55" fill="#f8fafc" font-size="11" font-family="Space Grotesk" text-anchor="middle">LLM Engine</text>
+                                    <circle cx="50" cy="72" r="3" fill="#1e293b" id="dot-llm" class="transition-colors duration-300"/>
+                                </g>
+                                
+                                <!-- Cloud Resource Node (Top Orchestration) -->
+                                <g transform="translate(250, 10)">
+                                    <rect x="0" y="0" width="100" height="30" rx="4" fill="#1e293b" />
+                                    <text x="50" y="18" fill="#f8fafc" font-size="9" font-family="Fira Code" text-anchor="middle">Structured Data</text>
+                                </g>
+                            </svg>
+                        </div>
+                        
+                        <!-- High Tech Console Readout (Right) -->
+                        <div class="lg:col-span-4 bg-cyber-black p-6 rounded-lg border border-cyber-border flex flex-col justify-between min-h-[300px]">
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between border-b border-cyber-border pb-3">
+                                    <span class="text-slate-500 font-mono text-[9px] uppercase">Telemetry Panel</span>
+                                    <span class="text-cyber-accent font-mono text-[9px] uppercase" id="console-node-status">ACTIVE</span>
+                                </div>
+                                
+                                <h4 class="text-lg font-bold text-white uppercase tracking-wider" id="console-node-name">n8n / LangChain</h4>
+                                <p class="text-xs text-slate-400 leading-relaxed font-mono" id="console-node-desc">
+                                    Coordinates agentic workflows. Controls decision-making processes, connects tools, integrates model APIs, and automates multi-step pipelines. Used to automate AI-driven data structures.
+                                </p>
+                            </div>
+
+                            <div class="space-y-3 pt-6 border-t border-cyber-border/30 font-mono text-[10px]">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-500 uppercase">Framework Ref:</span>
+                                    <span class="text-white font-bold" id="console-node-meta1">Agentic Orchestrator</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-500 uppercase">Integration Tier:</span>
+                                    <span class="text-cyber-mint font-bold" id="console-node-meta2">Production Ready</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-500 uppercase">Latency Spec:</span>
+                                    <span class="text-white font-bold" id="console-node-meta3">Optimized / Sub 12ms</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: EXPERIENCE & SYSTEMS (TIMELINE & PROJECTS) -->
+        <!-- Title: Building and Deployment (As strictly requested) -->
+        <section id="building-deployment" class="py-12 border-t border-cyber-border/60">
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-4">
+                <div>
+                    <span class="text-xs font-mono text-cyber-accent uppercase tracking-widest">// DEPLOYMENT RECORDS</span>
+                    <h2 class="text-4xl font-extrabold uppercase text-white mt-2">Building and Deployment</h2>
+                </div>
+                <p class="text-slate-400 text-xs md:text-sm max-w-md">
+                    Comprehensive log of software applications compiled, automated systems deployed, and enterprise technical requirements authored.
+                </p>
+            </div>
+
+            <!-- Two Column Timeline / Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- COLUMN 1: Professional Experience (7 cols) -->
+                <div class="lg:col-span-7 space-y-10">
+                    <h3 class="text-2xl font-bold text-white flex items-center gap-3 mb-8 uppercase tracking-wider">
+                        <i class="fa-solid fa-server text-cyber-accent text-lg"></i>
+                        <span>Engineering Timeline</span>
+                    </h3>
+
+                    <div class="relative border-l border-cyber-border/80 ml-4 space-y-12">
+                        
+                        <!-- Item 1: SARS Global AI Engineer -->
+                        <div class="relative pl-8 group">
+                            <!-- Chronology Bullet Node -->
+                            <div class="absolute -left-[6px] top-1.5 w-3 h-3 rounded-none bg-cyber-black border border-cyber-accent group-hover:bg-cyber-accent group-hover:scale-125 transition-all duration-300"></div>
+                            
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                                <div>
+                                    <span class="text-[10px] font-mono text-cyber-accent uppercase tracking-widest">// AI DEPLOYMENTS</span>
+                                    <h4 class="text-lg font-bold text-white group-hover:text-cyber-accent transition-colors">AI Engineer</h4>
+                                    <p class="text-xs text-slate-400 font-bold uppercase">SARS Global <span class="text-slate-600 font-normal">| Gurugram</span></p>
+                                </div>
+                                <span class="text-xs font-mono text-slate-500 bg-slate-900/60 border border-cyber-border px-3 py-1 rounded">2025.06 - 2025.08</span>
+                            </div>
+
+                            <ul class="space-y-2 text-xs md:text-sm text-slate-400 leading-relaxed list-inside list-square">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-cyber-accent mt-1.5 text-[6px]">&#9632;</span>
+                                    <span>Built backend integrations for a low-code AI platform, optimizing data flow vectors and ensuring smooth model deployment operations.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-cyber-accent mt-1.5 text-[6px]">&#9632;</span>
+                                    <span>Collaborated with the core development team to improve overall model efficiency, reduce inference latency, and ensure the timely delivery of AI solutions.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-cyber-accent mt-1.5 text-[6px]">&#9632;</span>
+                                    <span>Developed and automated robust, multi-agent data pipelines using n8n to streamline model evaluation processes.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Item 2: EMB Global Solution Architect -->
+                        <div class="relative pl-8 group">
+                            <div class="absolute -left-[6px] top-1.5 w-3 h-3 rounded-none bg-cyber-black border border-cyber-border group-hover:bg-cyber-accent group-hover:scale-125 transition-all duration-300"></div>
+                            
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                                <div>
+                                    <span class="text-[10px] font-mono text-cyber-mint uppercase tracking-widest">// ARCHITECTURE VECTORS</span>
+                                    <h4 class="text-lg font-bold text-white group-hover:text-cyber-mint transition-colors">Solution Architect</h4>
+                                    <p class="text-xs text-slate-400 font-bold uppercase">EMB Global <span class="text-slate-600 font-normal">| Gurugram, Haryana</span></p>
+                                </div>
+                                <span class="text-xs font-mono text-slate-500 bg-slate-900/60 border border-cyber-border px-3 py-1 rounded">2023.06 - 2024.09</span>
+                            </div>
+
+                            <ul class="space-y-2 text-xs md:text-sm text-slate-400 leading-relaxed list-inside list-square">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-cyber-mint mt-1.5 text-[6px]">&#9632;</span>
+                                    <span>Designed technical architectures, mapped resource schemas, and authored production user stories for enterprise projects.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-cyber-mint mt-1.5 text-[6px]">&#9632;</span>
+                                    <span>Created and delivered SRS, FRD, and BRD documents aligned with exact client integration specifications.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-cyber-mint mt-1.5 text-[6px]">&#9632;</span>
+                                    <span>Worked directly alongside developers and engineering analysts to secure high-quality, scalable system solutions.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-cyber-mint mt-1.5 text-[6px]">&#9632;</span>
+                                    <span>Conducted rigorous manual and automated bug testing alongside verification of AI-integrated modules.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Item 3: EMB Global Business Analyst Intern -->
+                        <div class="relative pl-8 group">
+                            <div class="absolute -left-[6px] top-1.5 w-3 h-3 rounded-none bg-cyber-black border border-cyber-border group-hover:bg-cyber-accent group-hover:scale-125 transition-all duration-300"></div>
+                            
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                                <div>
+                                    <span class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">// SYSTEM ANALYSIS</span>
+                                    <h4 class="text-lg font-bold text-white group-hover:text-cyber-accent transition-colors">Business Analyst Intern</h4>
+                                    <p class="text-xs text-slate-400 font-bold uppercase">EMB Global <span class="text-slate-600 font-normal">| Gurugram, Haryana</span></p>
+                                </div>
+                                <span class="text-xs font-mono text-slate-500 bg-slate-900/60 border border-cyber-border px-3 py-1 rounded">2023.01 - 2023.06</span>
+                            </div>
+
+                            <ul class="space-y-2 text-xs md:text-sm text-slate-400 leading-relaxed list-inside list-square">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-slate-600 mt-1.5 text-[6px]">&#9632;</span>
+                                    <span>Collaborated in mapping project scopes, documenting architectural requirements, and compiling structured deliverables.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-slate-600 mt-1.5 text-[6px]">&#9632;</span>
+                                    <span>Supported developer cohorts in shipping and integrating high-quality educational and systems software programs.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Item 4: IBM Remote Internship -->
+                        <div class="relative pl-8 group">
+                            <div class="absolute -left-[6px] top-1.5 w-3 h-3 rounded-none bg-cyber-black border border-cyber-accent group-hover:bg-cyber-accent group-hover:scale-125 transition-all duration-300"></div>
+                            
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                                <div>
+                                    <span class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">// IoT NETWORKS</span>
+                                    <h4 class="text-lg font-bold text-white group-hover:text-cyber-accent transition-colors">Project-Based Internship</h4>
+                                    <p class="text-xs text-slate-400 font-bold uppercase">IBM <span class="text-slate-600 font-normal">| Remote</span></p>
+                                </div>
+                                <span class="text-xs font-mono text-slate-500 bg-slate-900/60 border border-cyber-border px-3 py-1 rounded">2022.06 - 2022.07</span>
+                            </div>
+
+                            <ul class="space-y-2 text-xs md:text-sm text-slate-400 leading-relaxed list-inside list-square">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-slate-600 mt-1.5 text-[6px]">&#9632;</span>
+                                    <span>Engineered a home automation infrastructure to coordinate edge physical nodes via automated mobile telemetry pipelines, capturing ambient records.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- COLUMN 2: Systems Deployed / Projects (5 cols) -->
+                <div class="lg:col-span-5 space-y-10">
+                    <h3 class="text-2xl font-bold text-white flex items-center gap-3 mb-8 uppercase tracking-wider">
+                        <i class="fa-solid fa-cubes text-cyber-accent text-lg"></i>
+                        <span>Systems Deployed</span>
+                    </h3>
+
+                    <div class="space-y-6">
+                        
+                        <!-- Project 1: Chat with PDF -->
+                        <div class="relative group">
+                            <div class="absolute inset-0 p-[1px] rounded-xl bg-gradient-to-br from-slate-800 via-slate-800 to-transparent group-hover:from-cyber-accent/60 group-hover:to-cyber-mint/60 transition-all duration-300"></div>
+                            <div class="relative p-6 rounded-[11px] bg-cyber-dark border border-cyber-border/80 flex flex-col justify-between hover:shadow-[0_0_30px_rgba(0,240,255,0.06)] transition-all">
+                                <div>
+                                    <div class="flex items-center justify-between mb-4">
+                                        <h4 class="text-md font-bold text-white group-hover:text-cyber-accent transition-colors">Chat with PDF</h4>
+                                        <span class="text-[9px] font-mono font-bold tracking-widest text-cyber-accent bg-cyber-accent/10 border border-cyber-accent/20 px-2 py-0.5 rounded">RAG BASE</span>
+                                    </div>
+                                    <p class="text-xs md:text-sm text-slate-400 leading-relaxed mb-6 font-light">
+                                        Implemented a highly accurate RAG assistant enabling seamless interaction with uploaded documents via semantic vectors.
+                                    </p>
+                                </div>
+                                <div class="space-y-4">
+                                    <div class="flex flex-wrap gap-1.5 font-mono text-[9px]">
+                                        <span class="px-2 py-0.5 rounded bg-cyber-black border border-cyber-border text-slate-300">Python</span>
+                                        <span class="px-2 py-0.5 rounded bg-cyber-black border border-cyber-border text-slate-300">LangChain</span>
+                                        <span class="px-2 py-0.5 rounded bg-cyber-black border border-cyber-border text-slate-300">FAISS DB</span>
+                                        <span class="px-2 py-0.5 rounded bg-cyber-black border border-cyber-border text-slate-300">LLM APIs</span>
+                                    </div>
+                                    <div class="flex items-center justify-between border-t border-cyber-border/30 pt-3 text-[9px] font-mono text-slate-500">
+                                        <span>METRIC: 94% SEMANTIC HIT</span>
+                                        <span class="text-cyber-accent">ONLINE</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 2: Transcript to Chat -->
+                        <div class="relative group">
+                            <div class="absolute inset-0 p-[1px] rounded-xl bg-gradient-to-br from-slate-800 via-slate-800 to-transparent group-hover:from-cyber-accent/60 group-hover:to-cyber-mint/60 transition-all duration-300"></div>
+                            <div class="relative p-6 rounded-[11px] bg-cyber-dark border border-cyber-border/80 flex flex-col justify-between hover:shadow-[0_0_30px_rgba(0,240,255,0.06)] transition-all">
+                                <div>
+                                    <div class="flex items-center justify-between mb-4">
+                                        <h4 class="text-md font-bold text-white group-hover:text-cyber-accent transition-colors">Transcript to Chat</h4>
+                                        <span class="text-[9px] font-mono font-bold tracking-widest text-cyber-mint bg-cyber-mint/10 border border-cyber-mint/20 px-2 py-0.5 rounded">FastAPI</span>
+                                    </div>
+                                    <p class="text-xs md:text-sm text-slate-400 leading-relaxed mb-6 font-light">
+                                        Developed an automated workflow that converts complex audio/video transcripts into searchable repositories with conversational UI.
+                                    </p>
+                                </div>
+                                <div class="space-y-4">
+                                    <div class="flex flex-wrap gap-1.5 font-mono text-[9px]">
+                                        <span class="px-2 py-0.5 rounded bg-cyber-black border border-cyber-border text-slate-300">Python</span>
+                                        <span class="px-2 py-0.5 rounded bg-cyber-black border border-cyber-border text-slate-300">FastAPI</span>
+                                        <span class="px-2 py-0.5 rounded bg-cyber-black border border-cyber-border text-slate-300">NLP</span>
+                                        <span class="px-2 py-0.5 rounded bg-cyber-black border border-cyber-border text-slate-300">LLM APIs</span>
+                                    </div>
+                                    <div class="flex items-center justify-between border-t border-cyber-border/30 pt-3 text-[9px] font-mono text-slate-500">
+                                        <span>METRIC: &lt; 200ms LATENCY</span>
+                                        <span class="text-cyber-mint">SHIPPED</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 3: AI Prompt Enhancer -->
+                        <div class="relative group">
+                            <div class="absolute inset-0 p-[1px] rounded-xl bg-gradient-to-br from-slate-800 via-slate-800 to-transparent group-hover:from-cyber-accent/60 group-hover:to-cyber-mint/60 transition-all duration-300"></div>
+                            <div class="relative p-6 rounded-[11px] bg-cyber-dark border border-cyber-border/80 flex flex-col justify-between hover:shadow-[0_0_30px_rgba(0,240,255,0.06)] transition-all">
+                                <div>
+                                    <div class="flex items-center justify-between mb-4">
+                                        <h4 class="text-md font-bold text-white group-hover:text-cyber-accent transition-colors">AI Prompt Enhancer</h4>
+                                        <span class="text-[9px] font-mono font-bold tracking-widest text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2 py-0.5 rounded">PROMPT SYSTEM</span>
+                                    </div>
+                                    <p class="text-xs md:text-sm text-slate-400 leading-relaxed mb-6 font-light">
+                                        Built a specialized system that transforms basic textual queries into deep structured instructions for exact model executions.
+                                    </p>
+                                </div>
+                                <div class="space-y-4">
+                                    <div class="flex flex-wrap gap-1.5 font-mono text-[9px]">
+                                        <span class="px-2 py-0.5 rounded bg-cyber-black border border-cyber-border text-slate-300">Python</span>
+                                        <span class="px-2 py-0.5 rounded bg-cyber-black border border-cyber-border text-slate-300">LLM APIs</span>
+                                        <span class="px-2 py-0.5 rounded bg-cyber-black border border-cyber-border text-slate-300">Structured Systems</span>
+                                    </div>
+                                    <div class="flex items-center justify-between border-t border-cyber-border/30 pt-3 text-[9px] font-mono text-slate-500">
+                                        <span>METRIC: 100% RELIABILITY</span>
+                                        <span class="text-indigo-400">ACTIVE</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 4: INTERACTIVE SYSTEM SIMULATION / SANDBOX -->
+        <section id="simulator" class="py-12 border-t border-cyber-border/60">
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+                <div>
+                    <span class="text-xs font-mono text-cyber-accent uppercase tracking-widest">// SECURE SIMULATION PORTAL</span>
+                    <h2 class="text-4xl font-extrabold uppercase text-white mt-2">Agentic Sandbox</h2>
+                </div>
+                <p class="text-slate-400 text-xs md:text-sm max-w-md">
+                    Simulate prompt ingestion and watch the Prompt Enhancer optimize variables for LLM execution in real-time.
+                </p>
+            </div>
+
+            <!-- The Prompt Enhancer Sandbox Console -->
+            <div class="relative group p-[1px] rounded-2xl bg-gradient-to-br from-slate-700 via-slate-800 to-transparent group-hover:from-cyber-accent/30 transition-all duration-300">
+                <div class="bg-cyber-dark p-6 md:p-10 rounded-[15px] border border-cyber-border">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                        
+                        <!-- Input Control Console (Left) -->
+                        <div class="lg:col-span-5 space-y-6">
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-2 uppercase tracking-wide">1. Select Preset System Ingest</h3>
+                                <p class="text-xs text-slate-500 font-mono mb-4">Ingest a basic request to see the structural conversion.</p>
+                                
+                                <div class="space-y-3">
+                                    <button onclick="loadPromptPreset('rag')" class="w-full text-left p-3.5 bg-cyber-black hover:bg-slate-900 border border-cyber-border hover:border-cyber-accent/50 rounded-lg text-xs font-mono text-slate-300 transition-all flex items-center justify-between group/btn">
+                                        <span>RAG Document Query</span>
+                                        <i class="fa-solid fa-chevron-right text-slate-600 group-hover/btn:text-cyber-accent transition-colors"></i>
+                                    </button>
+                                    <button onclick="loadPromptPreset('api')" class="w-full text-left p-3.5 bg-cyber-black hover:bg-slate-900 border border-cyber-border hover:border-cyber-accent/50 rounded-lg text-xs font-mono text-slate-300 transition-all flex items-center justify-between group/btn">
+                                        <span>Webhook API Router</span>
+                                        <i class="fa-solid fa-chevron-right text-slate-600 group-hover/btn:text-cyber-accent transition-colors"></i>
+                                    </button>
+                                    <button onclick="loadPromptPreset('agent')" class="w-full text-left p-3.5 bg-cyber-black hover:bg-slate-900 border border-cyber-border hover:border-cyber-accent/50 rounded-lg text-xs font-mono text-slate-300 transition-all flex items-center justify-between group/btn">
+                                        <span>Autonomous Search Agent</span>
+                                        <i class="fa-solid fa-chevron-right text-slate-600 group-hover/btn:text-cyber-accent transition-colors"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="sandbox-input" class="block text-xs font-bold text-white uppercase tracking-wider">Or Input Custom Ingest</label>
+                                <textarea id="sandbox-input" rows="4" class="w-full bg-cyber-black border border-cyber-border rounded-lg p-3 text-xs font-mono text-white placeholder-slate-600 focus:outline-none focus:border-cyber-accent/60 transition-colors" placeholder="e.g. create a system that writes structured queries..."></textarea>
+                            </div>
+
+                            <div class="space-y-3">
+                                <label for="sandbox-strategy" class="block text-xs font-bold text-white uppercase tracking-wider">Orchestration System</label>
+                                <select id="sandbox-strategy" class="w-full bg-cyber-black border border-cyber-border rounded-lg p-3 text-xs font-mono text-white focus:outline-none focus:border-cyber-accent/60 transition-colors">
+                                    <option value="few-shot">Few-Shot Reasoner V2.1</option>
+                                    <option value="cot">Chain-of-Thought Orchestrator</option>
+                                    <option value="role">Role-Based System Structurer</option>
+                                </select>
+                            </div>
+
+                            <button onclick="triggerPromptEnhancement()" class="w-full py-3.5 bg-cyber-accent hover:bg-cyber-accent/90 text-cyber-black text-xs font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-rocket animate-pulse"></i>
+                                <span>Execute Prompt Enhancement</span>
+                            </button>
+                        </div>
+
+                        <!-- Output Sandbox Terminal (Right) -->
+                        <div class="lg:col-span-7 bg-cyber-black rounded-xl border border-cyber-border flex flex-col justify-between overflow-hidden shadow-2xl relative">
+                            <!-- Terminal Header bar -->
+                            <div class="px-4 py-3 bg-slate-900/60 border-b border-cyber-border flex items-center justify-between text-[10px] font-mono text-slate-400">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-green-500/80"></span>
+                                    <span class="ml-2">PROMPT_ENGINEER_CONSOLE.sh</span>
+                                </div>
+                                <span class="text-cyber-accent">STATUS: READY</span>
+                            </div>
+
+                            <!-- Terminal logs area -->
+                            <div class="p-6 h-[340px] overflow-y-auto font-mono text-xs text-slate-400 space-y-4 relative" id="sandbox-terminal">
+                                <div class="text-slate-600">// Standing by for systems ingestion...</div>
+                                <div class="text-slate-600">// Click a preset on the left or enter a custom prompt.</div>
+                                <div class="text-slate-300">RC_SYSTEM_CONSOLE:~$ <span class="animate-pulse">_</span></div>
+                            </div>
+
+                            <!-- Terminal Action bar -->
+                            <div class="px-4 py-3 bg-slate-900/30 border-t border-cyber-border flex items-center justify-between text-[9px] font-mono text-slate-500">
+                                <span>LINES PROCESSED: <span id="sandbox-lines">0</span></span>
+                                <button onclick="copyTerminalText()" class="px-3 py-1 bg-cyber-dark hover:bg-slate-900 border border-cyber-border text-slate-400 hover:text-white transition-all flex items-center gap-1">
+                                    <i class="fa-regular fa-copy"></i>
+                                    <span>Copy Result</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: HIGH-CONVERSION CONTACT PANEL (Direct Lead Capture) -->
+        <section id="contact" class="py-12 border-t border-cyber-border/60">
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+                <div>
+                    <span class="text-xs font-mono text-cyber-accent uppercase tracking-widest">// SECURE INTERFACE CONNECTION</span>
+                    <h2 class="text-4xl font-extrabold uppercase text-white mt-2">Execute Connection</h2>
+                </div>
+                <p class="text-slate-400 text-xs md:text-sm max-w-md">
+                    Initiate a handshake. Get in touch to schedule a comprehensive backend or automated workflow architecture review.
+                </p>
+            </div>
+
+            <!-- Interconnection Panel -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Info cards (Left) -->
+                <div class="lg:col-span-5 space-y-6">
+                    <h3 class="text-xl font-bold text-white uppercase tracking-wider mb-6">Connection Details</h3>
+                    
+                    <!-- Direct Email Node -->
+                    <div class="relative group p-[1px] rounded-xl bg-gradient-to-r from-slate-800 to-transparent hover:from-cyber-accent/40 transition-all duration-300">
+                        <div class="bg-cyber-dark p-5 rounded-[11px] border border-cyber-border/80 flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded bg-cyber-accent/10 text-cyber-accent flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-envelope text-md"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] text-slate-500 uppercase font-mono">Secure SMTP Channel</p>
+                                    <a href="mailto:rajatchawla9627@gmail.com" class="text-xs md:text-sm font-mono font-bold text-white hover:text-cyber-accent transition-colors">rajatchawla9627@gmail.com</a>
+                                </div>
+                            </div>
+                            <button onclick="copyToClipboard('rajatchawla9627@gmail.com')" class="px-2.5 py-1.5 bg-cyber-black hover:bg-slate-900 border border-cyber-border text-[9px] font-mono text-slate-400 hover:text-white transition-all flex items-center gap-1 active:scale-95">
+                                <i class="fa-regular fa-copy"></i>
+                                <span>COPY</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Direct Phone Node -->
+                    <div class="relative group p-[1px] rounded-xl bg-gradient-to-r from-slate-800 to-transparent hover:from-cyber-accent/40 transition-all duration-300">
+                        <div class="bg-cyber-dark p-5 rounded-[11px] border border-cyber-border/80 flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded bg-cyber-accent/10 text-cyber-accent flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-phone text-md"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] text-slate-500 uppercase font-mono">Mobile Cellular Channel</p>
+                                    <a href="tel:+918950072627" class="text-xs md:text-sm font-mono font-bold text-white hover:text-cyber-accent transition-colors">+91 8950072627</a>
+                                </div>
+                            </div>
+                            <a href="tel:+918950072627" class="px-2.5 py-1.5 bg-cyber-black hover:bg-slate-900 border border-cyber-border text-[9px] font-mono text-slate-400 hover:text-white transition-all flex items-center gap-1">
+                                <i class="fa-solid fa-phone-flip"></i>
+                                <span>CALL</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- LinkedIn Profile Node -->
+                    <div class="relative group p-[1px] rounded-xl bg-gradient-to-r from-slate-800 to-transparent hover:from-cyber-accent/40 transition-all duration-300">
+                        <div class="bg-cyber-dark p-5 rounded-[11px] border border-cyber-border/80 flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded bg-cyber-accent/10 text-cyber-accent flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-brands fa-linkedin-in text-md"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[9px] text-slate-500 uppercase font-mono">LinkedIn Network</p>
+                                    <span class="text-xs md:text-sm font-mono font-bold text-white">Rajat Chawla</span>
+                                </div>
+                            </div>
+                            <a href="https://www.linkedin.com/in/rajat-chawla-a7218a228/" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 bg-cyber-black hover:bg-slate-900 border border-cyber-border text-[9px] font-mono text-slate-400 hover:text-white transition-all flex items-center gap-1">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                <span>LINK</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Handshake Inquire Form (Right) -->
+                <div class="lg:col-span-7">
+                    <div class="p-6 md:p-8 rounded-2xl bg-cyber-dark border border-cyber-border">
+                        <h3 class="text-lg font-bold text-white mb-6 uppercase tracking-wider">Send System Inquire</h3>
+                        
+                        <form id="handshake-form" onsubmit="handleHandshake(event)" class="space-y-6 font-mono text-xs">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label for="form-name" class="block text-slate-400 uppercase tracking-wider font-semibold">User Entity Name</label>
+                                    <input type="text" id="form-name" required class="w-full bg-cyber-black border border-cyber-border rounded-lg px-4 py-3.5 text-white focus:outline-none focus:border-cyber-accent/60 transition-colors">
+                                </div>
+                                <div class="space-y-2">
+                                    <label for="form-email" class="block text-slate-400 uppercase tracking-wider font-semibold">SMTP Return Target</label>
+                                    <input type="email" id="form-email" required class="w-full bg-cyber-black border border-cyber-border rounded-lg px-4 py-3.5 text-white focus:outline-none focus:border-cyber-accent/60 transition-colors">
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <label for="form-subject" class="block text-slate-400 uppercase tracking-wider font-semibold">Connection Subject</label>
+                                <input type="text" id="form-subject" placeholder="e.g. fastapi-rag-agent-automation" required class="w-full bg-cyber-black border border-cyber-border rounded-lg px-4 py-3.5 text-white placeholder-slate-700 focus:outline-none focus:border-cyber-accent/60 transition-colors">
+                            </div>
+                            <div class="space-y-2">
+                                <label for="form-payload" class="block text-slate-400 uppercase tracking-wider font-semibold">Message Payload</label>
+                                <textarea id="form-payload" rows="5" placeholder="Include your system requirements or query specs..." required class="w-full bg-cyber-black border border-cyber-border rounded-lg px-4 py-3.5 text-white placeholder-slate-700 focus:outline-none focus:border-cyber-accent/60 transition-colors"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 bg-cyber-accent hover:bg-cyber-accent/90 text-cyber-black font-bold uppercase tracking-widest text-[11px] transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-cyber-accent/10">
+                                <i class="fa-solid fa-paper-plane animate-pulse"></i>
+                                <span>Execute Handshake Submission</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer class="py-12 border-t border-cyber-border/60 bg-cyber-black relative z-20">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-slate-500 font-mono text-[10px]">
+            <div class="flex items-center gap-4">
+                <span class="font-bold tracking-widest text-slate-400 uppercase">RAJAT CHAWLA</span>
+                <span class="text-slate-800">|</span>
+                <span>BACKEND / AI PLATFORMS</span>
+            </div>
+            
+            <p>&copy; 2026 Rajat Chawla. compiled in deep navy-slate. All rights reserved.</p>
+            
+            <div class="flex items-center space-x-6 text-sm">
+                <a href="https://www.linkedin.com/in/rajat-chawla-a7218a228/" target="_blank" rel="noopener noreferrer" class="hover:text-cyber-accent transition-colors">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:rajatchawla9627@gmail.com" class="hover:text-cyber-accent transition-colors">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="copy-toast" class="fixed bottom-6 right-6 z-50 transform translate-y-12 opacity-0 pointer-events-none transition-all duration-300 ease-out">
+        <div class="flex items-center gap-3 px-4 py-3 rounded bg-cyber-dark border border-cyber-accent/50 text-white text-xs font-mono shadow-2xl backdrop-blur-md">
+            <span class="w-2 h-2 bg-cyber-accent animate-ping rounded-full"></span>
+            <span id="toast-text">EMAIL COPIED!</span>
+        </div>
+    </div>
+
+    <!-- CODE CONTROLLERS -->
+    <script>
+        // Copy to clipboard mechanism
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast("NODE DATA COPIED TO SYSTEM INTERFACE!");
+            }).catch(err => {
+                console.error("Failed to compile clipboard action:", err);
+            });
+        }
+
+        // Custom Toast controller
+        function showToast(message) {
+            const toast = document.getElementById('copy-toast');
+            document.getElementById('toast-text').innerText = message;
+            toast.classList.remove('translate-y-12', 'opacity-0', 'pointer-events-none');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-12', 'opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+
+        // Mock handshake submission
+        function handleHandshake(e) {
+            e.preventDefault();
+            const name = document.getElementById('form-name').value;
+            showToast(`HANDSHAKE SUCCESSFUL: THANK YOU ${name.toUpperCase()}!`);
+            document.getElementById('handshake-form').reset();
+        }
+
+        // Compact glass navbar transition on scroll
+        const stickyNav = document.getElementById('sticky-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 250) {
+                stickyNav.classList.remove('-translate-y-full');
+            } else {
+                stickyNav.classList.add('-translate-y-full');
+            }
+        });
+
+        // Interactive Systems Architecture details data object
+        const architectureData = {
+            api: {
+                name: "FastAPI Gateway",
+                desc: "Acts as the unified entrance vector. Handles incoming HTTP integrations, manages security validation headers, conducts query request parsing, and handles output serialization with sub-millisecond delays.",
+                meta1: "Gateway Logic",
+                meta2: "REST / ASGI API",
+                meta3: "Sub 5.2ms Ingress"
+            },
+            orch: {
+                name: "n8n / LangChain Orchestration",
+                desc: "Coordinates complex multi-agent workflows. Controls tool logic decisions, coordinates parallel model APIs, formats LLM outputs, and structures system operations dynamically.",
+                meta1: "Agentic Controller",
+                meta2: "Node-based / LangChain",
+                meta3: "Parallel Actions"
+            },
+            db: {
+                name: "FAISS Vector DB",
+                desc: "Facilitates semantic search inside the RAG pipeline. Stores documents converted to high-dimensional embeddings, executing cosine-similarity indexes to fetch top text contexts inside microseconds.",
+                meta1: "Semantic Vault",
+                meta2: "FAISS Indexed",
+                meta3: "0.2ms Vector Search"
+            },
+            llm: {
+                name: "LLM Execution Engine",
+                desc: "Understands user intention based on system constraints. Ingests structured RAG data, matches system instructions, and compiles clean outputs without semantic noise.",
+                meta1: "Context Processor",
+                meta2: "LLM API Layer",
+                meta3: "Dynamic Model Router"
+            }
+        };
+
+        // Set active architecture node logic
+        function setActiveArchNode(nodeKey) {
+            const keys = ['api', 'orch', 'db', 'llm'];
+            
+            // Loop nodes to switch styles
+            keys.forEach(k => {
+                const rect = document.getElementById(`rect-${k}`);
+                const dot = document.getElementById(`dot-${k}`);
+                if (k === nodeKey) {
+                    rect.setAttribute('stroke', '#00f0ff');
+                    rect.setAttribute('stroke-width', '2');
+                    dot.setAttribute('fill', '#00f0ff');
+                } else {
+                    rect.setAttribute('stroke', '#1e293b');
+                    rect.setAttribute('stroke-width', '1.5');
+                    dot.setAttribute('fill', '#1e293b');
+                }
+            });
+
+            // Update Console details
+            const data = architectureData[nodeKey];
+            document.getElementById('console-node-name').innerText = data.name;
+            document.getElementById('console-node-desc').innerText = data.desc;
+            document.getElementById('console-node-meta1').innerText = data.meta1;
+            document.getElementById('console-node-meta2').innerText = data.meta2;
+            document.getElementById('console-node-meta3').innerText = data.meta3;
+
+            showToast(`TELEMETRY SWITCHED TO: ${data.name.toUpperCase()}`);
+        }
+
+        // Prompt presets for the AI Sandbox
+        const promptPresets = {
+            rag: {
+                input: "Answer user questions using only facts from the loaded PDF handbook. If the information isn't present, tell them you don't know.",
+                strategy: "cot"
+            },
+            api: {
+                input: "Convert raw client webhook JSON data into a clean Postgres record. Check if the customer ID already exists before inserting.",
+                strategy: "few-shot"
+            },
+            agent: {
+                input: "Search Google for the latest stock metrics if FAISS vector database lookup doesn't yield results matching threshold 0.85.",
+                strategy: "role"
+            }
+        };
+
+        // Load Preset into sandbox
+        function loadPromptPreset(presetKey) {
+            const data = promptPresets[presetKey];
+            document.getElementById('sandbox-input').value = data.input;
+            document.getElementById('sandbox-strategy').value = data.strategy;
+            showToast(`LOADED PRESET: ${presetKey.toUpperCase()}`);
+        }
+
+        // Mock Terminal simulation typewriter outputs based on inputs
+        const terminalResponses = {
+            'few-shot': `[INSPECTING INGEST VALUE...]
+[PARSING WEBHOOK ROUTER CRITERIA...]
+[LOADING FEW-SHOT STRATEGY v2.1...]
+
+SYSTEM_CONVERSION_COMPLETE // ENHANCED PROMPT:
+=========================================================
+# ROLE
+You are an advanced REST API integration layer. Your task is to clean raw JSON webhooks and prepare target inputs.
+
+# INGEST_SPECIFICATION
+User Raw Ingest: "{USER_INPUT}"
+
+# SHAPING_CONSTRAINTS
+1. VALIDATION: Verify incoming JSON carries schema variable "customer_id".
+2. DUP_CHECK: Run cosine lookup query matching Postgres constraints.
+3. CONVERSION: Output formatted INSERT SQL syntax.
+
+# REPRESENTATIVE_SAMPLES
+- Ingest: {"payload": {"customer_id": "99", "action": "buy"}}
+- Output: SELECT verify_and_upsert_customer('99', 'buy');
+
+# EXECUTION
+Execute Postgres lookup now. Output final transaction record payload only.
+=========================================================
+[CONSOLE] Status: COMPLETED in 14.2ms // 100% Reliability`,
+
+            'cot': `[INSPECTING INGEST VALUE...]
+[INITIATING LOGICAL STEP EVALUATION...]
+[LOADING CHAIN-OF-THOUGHT SYSTEM...]
+
+SYSTEM_CONVERSION_COMPLETE // ENHANCED PROMPT:
+=========================================================
+# SYSTEM_ROLE
+You are a highly restricted Retrieval Augmented Generation assistant processing system documents.
+
+# RAW_TASK
+User Ingest: "{USER_INPUT}"
+
+# INSTRUCTIONS
+Read context vectors. Before compiling your response, reason step-by-step:
+1. IDENTIFICATION: Extract semantic keywords from the query.
+2. DISCOVERY: Locate index vectors where similarity ratio > 0.82.
+3. INGESTION: Read retrieved text segments. Do not guess facts.
+4. VALIDATION: Check if response items are literally in the context.
+
+# DECISION_PATH
+Output your reasoning process within <thinking></thinking> brackets, followed by the response. If context is missing: output "ERROR: SECURE_CONTEXT_NOT_FOUND".
+=========================================================
+[CONSOLE] Status: COMPLETED in 18.5ms // 94% Semantic hit`,
+
+            'role': `[INSPECTING INGEST VALUE...]
+[COMPILING SPECIFICATION TARGETS...]
+[LOADING ROLE-BASED DEFINITIONS...]
+
+SYSTEM_CONVERSION_COMPLETE // ENHANCED PROMPT:
+=========================================================
+# SYSTEM_ROLE
+You are an autonomous systems agent with search API execution privileges.
+
+# SYSTEM_INSTRUCTIONS
+User Ingest: "{USER_INPUT}"
+
+# CAPABILITIES & TOOLS
+- VectorSearch: Queries local FAISS vectors.
+- WebSearch: Triggers secure Google API queries if vector search fails.
+
+# REASONING_STEPS
+1. Query FAISS Database using embeddings vector key.
+2. Inspect returning nodes context score.
+3. IF score < 0.85: Trigger WebSearch API node.
+4. Format search response in uniform JSON output structure.
+
+# OUTPUT_FORMAT
+Output clean, validated JSON carry state: { "status": "shipped", "result": "..." }
+=========================================================
+[CONSOLE] Status: COMPLETED in 12.0ms // 100% Reliability`
+        };
+
+        // Terminal animation logic
+        let terminalInterval = null;
+        function triggerPromptEnhancement() {
+            if (terminalInterval) clearInterval(terminalInterval);
+            
+            const terminal = document.getElementById('sandbox-terminal');
+            const inputVal = document.getElementById('sandbox-input').value || "Default System Command Query";
+            const strategy = document.getElementById('sandbox-strategy').value;
+            
+            terminal.innerHTML = `
+                <div class="text-cyber-accent animate-pulse">[SYSTEM] Initiating Prompt Enhancement Orchestration...</div>
+                <div class="text-slate-500 font-mono">// Compiling model tokens...</div>
+                <div class="text-slate-500 font-mono">// Analyzing input: "${inputVal.substring(0, 45)}..."</div>
+            `;
+
+            let progress = 0;
+            terminalInterval = setInterval(() => {
+                progress++;
+                if (progress === 1) {
+                    terminal.innerHTML += `<div class="text-slate-400 font-mono">[LOG] Connecting LLM API Orchestrator node...</div>`;
+                } else if (progress === 2) {
+                    terminal.innerHTML += `<div class="text-slate-400 font-mono">[LOG] Analyzing system constraints and vector thresholds...</div>`;
+                } else if (progress === 3) {
+                    terminal.innerHTML += `<div class="text-cyber-mint font-mono">[SUCCESS] Context ingestion complete. Optimizing prompt variables...</div>`;
+                } else if (progress === 4) {
+                    clearInterval(terminalInterval);
+                    // Fetch Response
+                    let rawResponse = terminalResponses[strategy] || terminalResponses['few-shot'];
+                    // Replace user input variable inside template
+                    const response = rawResponse.replace('{USER_INPUT}', inputVal);
+                    
+                    // Display text with typewriter simulation
+                    terminal.innerHTML += `<div class="text-white mt-4 border-t border-cyber-border pt-4 font-mono whitespace-pre-wrap">${response}</div>`;
+                    
+                    // Update lines count
+                    const lineCount = response.split('\n').length;
+                    document.getElementById('sandbox-lines').innerText = lineCount;
+                    
+                    // Scroll to bottom
+                    terminal.scrollTop = terminal.scrollHeight;
+                    showToast("PROMPT STACKS ENHANCED SUCCESSFULLY!");
+                }
+            }, 600);
+        }
+
+        // Copy text in terminal simulator to clipboard
+        function copyTerminalText() {
+            const terminal = document.getElementById('sandbox-terminal');
+            navigator.clipboard.writeText(terminal.innerText).then(() => {
+                showToast("TERMINAL CODE COPIED TO SYSTEM INTERFACE!");
+            });
+        }
+    </script>
+</body>
+</html>
